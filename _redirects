@@ -1,0 +1,5 @@
+/api/register /.netlify/functions/register 200
+/api/login /.netlify/functions/login 200
+/api/hunts /.netlify/functions/hunts 200
+/api/hunts/* /.netlify/functions/hunts-put 200
+/api/health /.netlify/functions/health 200
