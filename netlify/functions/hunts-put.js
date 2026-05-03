@@ -23,6 +23,19 @@ function authenticateToken(event) {
 }
 
 exports.handler = async (event, context) => {
+  // Handle CORS preflight
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      },
+      body: "",
+    };
+  }
+
   if (event.httpMethod === "PUT") {
     try {
       const user = authenticateToken(event);
@@ -35,6 +48,11 @@ exports.handler = async (event, context) => {
       );
       return {
         statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        },
         body: "",
       };
     } catch (err) {
@@ -42,11 +60,21 @@ exports.handler = async (event, context) => {
       if (err.message === "未登录" || err.message === "登录已过期") {
         return {
           statusCode: 401,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          },
           body: JSON.stringify({ error: err.message }),
         };
       }
       return {
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        },
         body: JSON.stringify({ error: "更新失败" }),
       };
     }
@@ -61,6 +89,11 @@ exports.handler = async (event, context) => {
       );
       return {
         statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        },
         body: "",
       };
     } catch (err) {
@@ -68,11 +101,21 @@ exports.handler = async (event, context) => {
       if (err.message === "未登录" || err.message === "登录已过期") {
         return {
           statusCode: 401,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
+            "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          },
           body: JSON.stringify({ error: err.message }),
         };
       }
       return {
         statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        },
         body: JSON.stringify({ error: "删除失败" }),
       };
     }
