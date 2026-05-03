@@ -9,41 +9,24 @@
   from = "/api/register"
   to = "/.netlify/functions/register"
   status = 200
-  methods = ["POST"]
 
 [[redirects]]
   from = "/api/login"
   to = "/.netlify/functions/login"
   status = 200
-  methods = ["POST"]
 
 [[redirects]]
   from = "/api/hunts"
   to = "/.netlify/functions/hunts"
   status = 200
-  methods = ["GET"]
-
-[[redirects]]
-  from = "/api/hunts"
-  to = "/.netlify/functions/hunts-post"
-  status = 200
-  methods = ["POST"]
 
 [[redirects]]
   from = "/api/hunts/*"
   to = "/.netlify/functions/hunts-put"
   status = 200
-  methods = ["PUT"]
-
-[[redirects]]
-  from = "/api/hunts/*"
-  to = "/.netlify/functions/hunts-delete"
-  status = 200
-  methods = ["DELETE"]
 
 [[redirects]]
   from = "/api/health"
   to = "/.netlify/functions/health"
-  status = 200
-  methods = ["GET"]</content>
+  status = 200</content>
 <parameter name="filePath">e:/Program Files/temp-projkect/backend/LuoKeRecorder-Backend - Netlify/netlify.toml
